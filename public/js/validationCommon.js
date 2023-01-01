@@ -1,9 +1,18 @@
 function resetErrors (inputs, errorTexts, errorInfo) {
+// try catche dlatego, ze przy update Studenta nie ma pól password i repeatPassword
     for (let i=0; i < inputs.length; i++) {
-        inputs[i].classList.remove("error-input");
+        try {
+            inputs[i].classList.remove("error-input");
+        } catch (error){
+
+        }
     }
     for (let i=0; i < errorTexts.length; i++) {
-        errorTexts[i].innerText = "";
+        try {
+            errorTexts[i].innerText = "";
+        } catch (error){
+
+        }
     }
     errorInfo.innerText = "";
 }

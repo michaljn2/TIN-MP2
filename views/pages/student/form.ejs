@@ -63,7 +63,7 @@
 
         <% if (formMode == 'createNew') {%>
             <label for="password"><%= __('stud.fields.password')%>: <span class="symbol-required">*</span></label>
-        <% } %>
+
             <input type="text" name="password" id="password"
                 <%= (formMode == 'createNew') ? '' : 'hidden' %>
                    class="<%= validationErrors.find(e => e.path.includes('password')) ? 'error-input' : ''%>"
@@ -73,9 +73,9 @@
                     <%= validationErrors.find(e => e.path.includes('password')).message%>
                 <% } %>
             </span>
-        <% if (formMode == 'createNew') {%>
+
             <label for="repeatPassword"><%= __('stud.fields.password')%>: <span class="symbol-required">*</span></label>
-        <% } %>
+
             <input type="password" name="repeatPassword" id="repeatPassword"
                     <%= (formMode == 'createNew') ? '' : 'hidden' %>
                    class="<%= validationErrors.find(e => e.path.includes('repeatPassword')) ? 'error-input' : ''%>"
@@ -85,6 +85,7 @@
                     <%= validationErrors.find(e => e.path.includes('repeatPassword')).message%>
                 <% } %>
             </span>
+            <% } %>
 
 
         <p id="errorsSummary" class="errors-text"> <%= validationErrors.length > 0 ? __('validation.invalidForm') : ''%></p>

@@ -102,6 +102,7 @@ function validateForm () {
         errorEmail.innerText = emailRegexMessage;
     }
 
+    if(passwordInput != null) {
         const passwordRangeMessage = document.getElementById("errorMessage-password-range").innerText;
         if (!checkRequired(passwordInput.value)) {
             valid = false;
@@ -123,6 +124,7 @@ function validateForm () {
             repeatPasswordInput.classList.add("error-input");
             errorRepeatPassword.innerText = repeatPasswordMessage;
         }
+    }
     
 
     const invalidFormMessage = document.getElementById("errorMessage-invalidForm").innerText;
