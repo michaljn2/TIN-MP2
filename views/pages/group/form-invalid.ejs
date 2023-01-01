@@ -1,0 +1,28 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Nowa grupa</h2>
+        <form class="form">
+            <label for="shortcut">Skrót: <span class="symbol-required">*</span></label>
+            <input type="text" name="shortcut" id="shortcut" class="error-input" required>
+            <span id="errorShortcut" class="errors-text">Pole jest wymagane</span>
+
+            <label for="course">Przedmiot: <span class="symbol-required">*</span></label>
+            <input type="text" name="course" id="course" class="error-input" required>
+            <span id="errorCourse" class="errors-text">Pole jest wymagane</span>
+
+            <label for="faculty">Specjalizacja:</label>
+            <input type="text" name="faculty" id="faculty">
+            <span id="errorFaculty"></span>
+
+            <label for="capacity">Liczba miejsc: <span class="symbol-required">*</span></label>
+            <input type="number" name="capacity" id="capacity" class="form error-input" required>
+            <span id="errorCapacity" class="errors-text">Pole jest wymagane, musi to być liczba całkowita</span>
+
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text">Formularz zawiera błędy</p>
+                <input type="submit" class="form-buttons-submit" value="Dodaj" />
+                <a href="/groups" class="form-buttons-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

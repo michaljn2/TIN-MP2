@@ -1,0 +1,182 @@
+{
+	"main-page": {
+		"content": "Main Page"
+	},
+	"account": {
+		"logging": "Logging",
+		"logIn": "Log in",
+		"logOut": "Log out",
+		"passChange": "Change password",
+		"info": "You are logged in as",
+		"password": "Password",
+		"login": "Email"
+	},
+	"nav": {
+		"main-page": "Main page",
+		"students": "Students",
+		"groups": "Groups",
+		"studies": "Studies"
+	},
+	"list": {
+		"actions": {
+			"title": "Actions",
+			"details": "Details",
+			"edit": "Edit",
+			"delete": "Delete",
+			"actions": "list.actions.actions"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Return",
+			"edit": "Edit",
+			"cancel": "Cancel"
+		}
+	},
+	"stud": {
+		"fields": {
+			"firstName": "First name",
+			"lastName": "Last name",
+			"email": "Email",
+			"index": "Index",
+			"birthDate": "Birthdate",
+			"password": "Password"
+		},
+		"list": {
+			"title": "Students",
+			"addNew": "Add new student",
+			"noData": "No students in database",
+			"pageTitle": "List of students"
+		},
+		"form": {
+			"studies": "History of studies",
+			"add": {
+				"pageTitle": "Adding a new student",
+				"btnLabel": "Add new student"
+			},
+			"edit": {
+				"pageTitle": "Editing an student",
+				"btnLabel": "Save changes"
+			},
+			"details": {
+				"pageTitle": "Student details",
+				"btnLabel": "Save changes"
+			},
+			"placeholder": {
+				"firstName": "2-60 signs",
+				"lastName": "2-60 signs",
+				"index": "1-5 digits after 's', ex. s2222",
+				"email": "ex. s2222@pja.edu.pl"
+			}
+		}
+	},
+	"group": {
+		"fields": {
+			"shortcut": "Shortcut",
+			"course": "Course",
+			"faculty": "Faculty",
+			"capacity": "Capacity"
+		},
+		"list": {
+			"title": "Groups",
+			"addNew": "Add new group",
+			"noData": "No groups in database",
+			"pageTitle": "List of groups"
+		},
+		"form": {
+			"studs": "Students in group",
+			"add": {
+				"pageTitle": "New group",
+				"btnLabel": "Add new group"
+			},
+			"edit": {
+				"pageTitle": "Group edition",
+				"btnLabel": "Save changes"
+			},
+			"details": {
+				"pageTitle": "Group details"
+			},
+			"placeholder": {
+				"shortcut": "2-60 znaków",
+				"course": "2-60 znaków",
+				"capacity": "Liczba całkowita od 1 do 150"
+			}
+		}
+	},
+	"study": {
+		"fields": {
+			"student": "Student",
+			"group": "Group",
+			"grade": "Grade",
+			"itn": "ITN"
+		},
+		"list": {
+			"title": "Studies",
+			"addNew": "Add new study",
+			"noData": "No studies in database",
+			"pageTitle": "List of studies"
+		},
+		"form": {
+			"selectStudent": "Select student",
+			"selectGroup": "Select group",
+			"selectGrade": "Select grade",
+			"add": {
+				"pageTitle": "New study",
+				"btnLabel": "Add new study"
+			},
+			"edit": {
+				"pageTitle": "Study edition",
+				"btnLabel": "Save changes"
+			},
+			"details": {
+				"pageTitle": "Study details"
+			}
+		}
+	},
+	"changePassword": {
+		"title": "Password change",
+		"newPassword": "New password",
+		"repeatPassword": "Repeat password",
+		"confirm": "Save changes"
+	},
+	"validation": {
+		"required": "This field is required",
+		"invalidForm": "Form has mistakes",
+		"stud": {
+			"firstName": "This field must contain 2-60 signs",
+			"lastName": "This field must contain 2-60 signs",
+			"index": {
+				"regex": "This field must contain 's' and max 5 digits student number"
+			},
+			"birthDate": {
+				"regex": "This field must contain date in yyyy-MM-dd format (ex. 2001-01-11)",
+				"mature": "Student must be at least 18 years old"
+			},
+			"email": {
+				"range": "This field must contain 5-60 signs",
+				"regex": "This field must contain proper email address"
+			},
+			"password": {
+				"range": "This field must contain 5-30 signs"
+			}
+		},
+		"group": {
+			"shortcut": "Shortcut contains name of semester, course shortcut and group number separated by '-'",
+			"course": "This field must contain 2-3 big letters",
+			"capacity": {
+				"integer": "This field must be an integer",
+				"range": "Capacity must be between 1 and 150"
+			}
+		},
+		"changePassword": {
+			"password": {
+				"range": "This field must contain 5-30 signs"
+			},
+			"repeatPassword": "This field must be the same as password"
+		}
+	},
+	"common": {
+		"yes": "yes",
+		"no": "no"
+	}
+}

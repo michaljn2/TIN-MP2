@@ -1,0 +1,103 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationGroupForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <form id="groupForm" class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= group._id %>">
+
+        <label for="shortcut"><%= __('group.fields.shortcut')%>: <span class="symbol-required">*</span></label>
+        <input type="text" id="shortcut" name="shortcut" placeholder="<%= __('group.form.placeholder.shortcut')%>" value="<%= group.shortcut %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('shortcut')) ? 'error-input' : '' %>"
+        >
+        <span class="errors-text" id="errorShortcut">
+            <% if (validationErrors.find(e => e.path.includes('shortcut'))) { %>
+                <%= validationErrors.find(e => e.path.includes('shortcut')).message %>
+            <% } %>
+        </span>
+
+        <label for="course"><%= __('group.fields.course')%>: <span class="symbol-required">*</span> </label>
+        <input type="text" id="course" name="course" placeholder="<%= __('group.form.placeholder.course')%>" value="<%= group.course %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('course')) ? 'error-input' : '' %>"
+        >
+        <span class="errors-text" id="errorCourse">
+            <% if (validationErrors.find(e => e.path.includes('course'))) { %>
+                <%= validationErrors.find(e => e.path.includes('course')).message %>
+            <% } %>
+        </span>
+
+        <label for="faculty"><%= __('group.fields.faculty')%>:</label>
+        <input type="text" id="faculty" name="faculty" value="<%= group.faculty %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>>
+        <span id="errorFaculty"></span>
+
+        <label for="capacity"><%= __('group.fields.capacity')%>: <span class="symbol-required">*</span></label>
+        <input type="number" id="capacity" name="capacity" placeholder="<%= __('group.form.placeholder.capacity')%>"
+               value="<%= group.capacity %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('capacity')) ? 'error-input' : '' %>"
+        >
+        <span class="errors-text" id="errorCapacity">
+            <% if (validationErrors.find(e => e.path.includes('capacity'))) { %>
+                <%= validationErrors.find(e => e.path.includes('capacity')).message %>
+            <% } %>
+        </span>
+
+        <p id="errorsSummary" class="errors-text"> <%= validationErrors.length > 0 ? __('validation.invalidForm') : ''%> </p>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="form-buttons">
+                <a href="/groups/edit/<%= group._id %>" class="form-buttons-edit"><%= __('form.actions.edit')%></a>
+            </div>
+        <% } %>
+    </form>
+    <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+        <% if (group.studies.length > 0) { %>
+            <h2>
+                <%= __('group.form.studs')%>
+            </h2>
+            <table class="table-list">
+                <thead>
+                <tr>
+                    <th><%= __('stud.fields.firstName')%></th>
+                    <th><%= __('stud.fields.lastName')%></th>
+                    <th><%= __('stud.fields.index')%></th>
+                    <th><%= __('study.fields.grade')%></th>
+                    <th><%= __('study.fields.itn')%></th>
+                </tr>
+                </thead>
+                <tbody>
+                <% for (let s of group.studies) { %>
+                    <tr>
+                        <td><%= s.student.firstName %></td>
+                        <td><%= s.student.lastName %></td>
+                        <td><a href="/students/details/<%= s.student._id %>"><%= s.student.index %></a></td>
+                        <td><%= s.grade %></td>
+                        <td><%= (s.itn == 1) ? __('common.yes') : __('common.no') %></td>
+                    </tr>
+                <% } %>
+                </tbody>
+            </table>
+        <% } %>
+    <% } %>
+
+    <div class="form-buttons">
+        <% if (formMode != 'showDetails') { %>
+            <input class="form-buttons-submit" type="submit" form="groupForm" value="<%= btnLabel %>">
+            <a class="form-buttons-cancel" href="/groups"><%= __('form.actions.cancel')%></a>
+        <% } else { %>
+            <a class="form-buttons-cancel" href="/groups"><%= __('form.actions.return')%></a>
+        <% } %>
+    </div>
+</main>
+<%- include('../../fragments/footer.ejs') %>
+
+<div style="display: none">
+    <span id="errorMessage-required"><%= __('validation.required')%></span>
+    <span id="errorMessage-invalidForm"><%= __('validation.invalidForm')%></span>
+    <span id="errorMessage-shortcut"><%= __('validation.group.shortcut')%></span>
+    <span id="errorMessage-course"><%= __('validation.group.course')%></span>
+    <span id="errorMessage-capacity-integer"><%= __('validation.group.capacity.integer')%></span>
+    <span id="errorMessage-capacity-range"><%= __('validation.group.capacity.range')%></span>
+</div>

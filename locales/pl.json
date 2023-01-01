@@ -1,0 +1,176 @@
+{
+	"main-page": {
+		"content": "Strona główna"
+	},
+	"account": {
+		"logging": "Logowanie",
+		"logIn": "Zaloguj się",
+		"logOut": "Wyloguj się",
+		"passChange": "Zmień hasło",
+		"info": "Jesteś zalogowany jako",
+		"password": "Hasło",
+		"login": "Email"
+	},
+	"nav": {
+		"main-page": "Strona główna",
+		"students": "Studenci",
+		"groups": "Grupy",
+		"studies": "Przynależności do grup"
+	},
+	"list": {
+		"actions": {
+			"title": "Akcje",
+			"details": "Szczegóły",
+			"edit": "Edytuj",
+			"delete": "Usuń",
+			"actions": "list.actions.actions"
+		}
+	},
+	"form": {
+		"actions": {
+			"return": "Powrót",
+			"edit": "Edytuj",
+			"cancel": "Anuluj"
+		}
+	},
+	"stud": {
+		"fields": {
+			"firstName": "Imię",
+			"lastName": "Nazwisko",
+			"email": "Email",
+			"index": "Indeks",
+			"birthDate": "Data urodzenia",
+			"password": "Hasło"
+		},
+		"list": {
+			"title": "Studenci",
+			"addNew": "Dodaj nowego studenta",
+			"noData": "Brak studentów w bazie",
+			"pageTitle": "Lista studentów"
+		},
+		"form": {
+			"studies": "Historia przynależności do grup",
+			"add": {
+				"pageTitle": "Dodawanie studenta",
+				"btnLabel": "Dodaj studenta"
+			},
+			"edit": {
+				"pageTitle": "Edycja studenta",
+				"btnLabel": "Zapisz zmiany"
+			},
+			"details": {
+				"pageTitle": "Szczegóły studenta"
+			},
+			"placeholder": {
+				"firstName": "2-60 znaków",
+				"lastName": "2-60 znaków",
+				"index": "1-5 cyfry po 's', np. s2222",
+				"email": "np. s2222@pja.edu.pl"
+			}
+		}
+	},
+	"group": {
+		"fields": {
+			"shortcut": "Skrót",
+			"course": "Przedmiot",
+			"faculty": "Specjalizacja",
+			"capacity": "Ilość miejsc"
+		},
+		"list": {
+			"title": "Grupy",
+			"addNew": "Dodaj nową grupę",
+			"noData": "Brak grup w bazie",
+			"pageTitle": "Lista grup"
+		},
+		"form": {
+			"studs": "Szczegóły studentów grupy",
+			"add": {
+				"pageTitle": "Dodawanie grupy",
+				"btnLabel": "Dodaj grupę"
+			},
+			"edit": {
+				"pageTitle": "Edycja grupy",
+				"btnLabel": "Zapisz zmiany"
+			},
+			"details": {
+				"pageTitle": "Szczegóły grupy"
+			},
+			"placeholder": {
+				"shortcut": "2-60 znaków",
+				"course": "2-60 znaków",
+				"capacity": "Liczba całkowita od 1 do 150"
+			}
+		}
+	},
+	"study": {
+		"fields": {
+			"student": "Student",
+			"group": "Grupa",
+			"grade": "Ocena",
+			"itn": "ITN"
+		},
+		"list": {
+			"title": "Przynależności",
+			"addNew": "Dodaj nową przynależność",
+			"noData": "Brak przynależności w bazie danych",
+			"pageTitle": "Lista przynależności"
+		},
+		"form": {
+			"selectStudent": "Wybierz studenta",
+			"selectGroup": "Wybierz grupę",
+			"selectGrade": "Wybierz ocenę",
+			"add": {
+				"pageTitle": "Nowa przynależność",
+				"btnLabel": "Dodaj nową przynależność"
+			},
+			"edit": {
+				"pageTitle": "Edycja przynależności",
+				"btnLabel": "Zapisz zmiany"
+			},
+			"details": {
+				"pageTitle": "Szczegóły przynależności"
+			}
+		}
+	},
+	"changePassword": {
+		"title": "Zmiana hasła",
+		"newPassword": "Nowe hasło",
+		"repeatPassword": "Powtórz hasło",
+		"confirm": "Zapisz zmiany"
+	},
+	"validation": {
+		"required": "To pole jest wymagane",
+		"invalidForm": "Formularz zawiera błędy",
+		"stud": {
+			"firstName": "To pole musi zawierać od 2 do 60 znaków",
+			"lastName": "To pole musi zawierać od 2 do 60 znaków",
+			"index": {
+				"regex": "To pole musi zawierać 's' oraz 5-znakowy numer studenta (np.s2222)"
+			},
+			"birthDate": {
+				"regex": "To pole musi zawierać datę w formacie yyyy-MM-dd (np. 2001-01-11)",
+				"mature": "Student musi mieć co najmniej 18 lat"
+			},
+			"email": {
+				"range": "To pole musi zawierać od 5 do 60 znaków",
+				"regex": "To pole musi zawierać poprawny adres email"
+			}
+		},
+		"group": {
+			"shortcut": "Skrót zawiera nazwę semestru, skrót przedmiotu oraz numer grupy oddzielone '-'",
+			"course": "To pole zawiera 2-3 duże litery",
+			"capacity": {
+				"integer": "To pole jest liczbą całkowitą",
+				"range": "Liczba miejsc musi być między 1 a 150"
+			}
+		},
+		"password": {
+			"range": "To pole powinno mieć 5-30 znaków"
+		},
+		"repeatPassword": "To pole powinno być takie samo jak pole 'Nowe hasło'"
+	},
+	"common": {
+		"yes": "tak",
+		"no": "nie"
+	}
+}

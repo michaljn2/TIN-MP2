@@ -1,0 +1,11 @@
+const express = require('express');
+const router = express.Router();
+const studyController = require('../controllers/studyController');
+router.get('/', studyController.showStudyList);
+router.get('/add', studyController.showAddStudyForm);
+router.get('/details/:studyId', studyController.showStudyDetails);
+router.get('/edit/:studyId', studyController.showEditStudy);
+router.post('/add', studyController.addStudy);
+router.post('/edit', studyController.updateStudy);
+router.get('/delete/:studyId', studyController.deleteStudy);
+module.exports = router;

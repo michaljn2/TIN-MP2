@@ -1,0 +1,58 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <title>University</title>
+    <link rel="stylesheet" href="../../css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1"/>
+</head>
+
+<body>
+    <header>
+        <h1>PJATK Zajęcia</h1>
+        <img src="/images/pjatk-logo.jpg" alt="PJATK Logo">
+    </header>
+    <nav>
+        <ul>
+            <li><a href="../../index.html">Strona główna</a></li>
+            <li><a href="views/pages/student/list.ejs" class="active">Studenci</a></li>
+            <li><a href="../group/list.ejs">Grupy</a></li>
+            <li><a href="views/pages/study/list.ejs">Przynależność</a></li>
+        </ul>
+    </nav>
+    <main>
+        <h2>Edycja studenta</h2>
+        <form class="form">
+            <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+            <input type="text" name="firstName" id="firstName" value="Jan" required>
+            <span id="errorFirstName"></span>
+
+            <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+            <input type="text" name="lastName" id="lastName" value="Kowalski" required>
+            <span id="errorLastName"></span>
+
+            <label for="index">Indeks: <span class="symbol-required">*</span> </label>
+            <input type="text" name="index" id="index" required>
+            <span id="errorIndex"></span>
+
+            <label for="birthDate">Data urodzenia: <span class="symbol-required">*</span></label>
+            <input type="date" name="birthDate" id="birthDate" value="2001-03-20" required>
+            <span id="errorBirthDate"></span>
+
+            <label for="email">Email: <span class="symbol-required">*</span></label>
+            <input type="email" name="email" id="email" value="kowal@gmail.com" required>
+            <span id="errorEmail"></span>
+            <div class="form-buttons">
+                <input type="submit" class="form-buttons-edit" value="Edytuj">
+                <a href="/students" class="form-buttons-cancel">Anuluj</a>
+                <p id="errorsSummary"></p>
+            </div>
+        </form>
+    </main>
+    <footer>
+        Michał Januszewski, s22882
+    </footer>
+</body>
+
+</html>

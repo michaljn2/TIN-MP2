@@ -1,0 +1,39 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły przynależności</h2>
+        <form class="form">
+            <label for="idStudent">Student: *</label>
+            <select name="idStudent" id="idStudent" disabled>
+                <option value="1">Jan Kowalski s22888</option>
+                <option value="2">Marek Kwiatkowski s22908</option>
+            </select>
+            <span id="errorIdStudent"></span>
+
+            <label for="idGroup">Grupa: *</label>
+            <select name="idGroup" id="idGroup" disabled>
+                <option value="1">2022Z-TIN-19c</option>
+                <option value="2">2021L-ASD-19c</option>
+            </select>
+            <span id="errorIdGroup"></span>
+
+            <label for="ITN">ITN: </label>
+            <input type="checkbox" name="ITN" id="ITN" disabled>
+            <span id="errorITN"></span>
+
+            <label for="grade">Ocena:</label>
+            <select name="grade" id="grade" disabled>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="3,5">3.5</option>
+                <option value="4">4</option>
+                <option value="4,5">4.5</option>
+                <option value="5">5</option>
+            </select>
+            <span id="errorGrade"></span>
+            <div class="form-buttons">
+                <a href="/studies/edit/:studyId" class="form-buttons-edit">Edytuj</a>
+                <a href="/studies" class="form-buttons-back">Powrót</a>
+            </div>
+        </form>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

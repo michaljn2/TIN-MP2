@@ -1,0 +1,49 @@
+<!DOCTYPE html>
+<html lang="pl-PL">
+
+<head>
+    <meta charset="UTF-8">
+    <title>University</title>
+    <link rel="stylesheet" href="/css/style.css">
+    <meta name="viewport" content="width=device-width,initial-scale=1.0"/>
+    <script type="application/javascript" src="/js/validationCommon.js"></script>
+</head>
+
+<body>
+<header>
+    <h1>PJATK Students</h1>
+    <img src="/images/pjatk-logo.jpg" alt="PJATK Logo">
+    <% if(!loggedUser) { %>
+        <div id="login">
+            <h5><%= __('account.logging')%></h5>
+            <form method="post" action="/login" novalidate>
+                <label for="loginEmail"><%= __('account.login')%>:</label>
+                <input type="email" id="loginEmail" name="email">
+
+                <label for="loginPassword"><%= __('account.password')%>: </label>
+                <input type="password" id="loginPassword" name="password">
+
+                <input type="submit" value="<%= __('account.logIn')%>">
+                <span id="loginErrors"><%= loginError ? loginError : ''%></span>
+            </form>
+        </div>
+    <% } else { %>
+        <span><%= __('account.info')%>: <%= loggedUser.firstName + ' ' + loggedUser.lastName%></span>
+        <a href="/logout"><%= __('account.logOut')%></a>
+        <a href="/password"><%= __('account.passChange')%></a>
+    <% } %>
+</header>
+<nav>
+    <ul>
+        <li><a href="/" class="<%= navLocation == 'main' ? 'active' : ''%>"><%= __('nav.main-page')%></a></li>
+        <%if (loggedUser) {%>
+        <li><a href="/students" class="<%= navLocation == 'student' ? 'active' : ''%>"><%= __('nav.students')%></a></li>
+        <li><a href="/groups" class="<%= navLocation == 'group' ? 'active' : ''%>"><%= __('nav.groups')%></a></li>
+        <li><a href="/studies" class="<%= navLocation == 'study' ? 'active' : ''%>"><%= __('nav.studies')%></a></li>
+        <% } %>
+    </ul>
+    <ul>
+        <li><a href="/changeLang/pl" class="<%= lang == 'pl' ? 'active' : ''%>">PL</a> </li>
+        <li><a href="/changeLang/en" class="<%= lang == 'en' ? 'active' : ''%>">EN</a> </li>
+    </ul>
+</nav>

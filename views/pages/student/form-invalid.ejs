@@ -1,0 +1,31 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Nowy student</h2>
+        <form class="form">
+            <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+            <input type="text" name="firstName" id="firstName" class="error-input" required>
+            <span id="errorFirstName" class="errors-text">Pole jest wymagane</span>
+
+            <label for="lastName">Nazwisko: <span class="symbol-required">*</span></label>
+            <input type="text" name="lastName" id="lastName" class="error-input" required>
+            <span id="errorLastName" class="errors-text">Pole jest wymagane</span>
+
+            <label for="index">Indeks: <span class="symbol-required">*</span> </label>
+            <input type="text" name="index" id="index" class="error-input" required>
+            <span id="errorIndex" class="errors-text">Pole jest wymagane</span>
+
+            <label for="birthDate">Data urodzenia: <span class="symbol-required">*</span></label>
+            <input type="date" name="birthDate" id="birthDate" class="error-input" required>
+            <span id="errorBirthDate" class="errors-text">Pole jest wymagane</span>
+
+            <label for="email">Email: <span class="symbol-required">*</span></label>
+            <input type="email" name="email" id="email" class="error-input" required>
+            <span id="errorEmail" class="errors-text">Pole jest wymagane</span>
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text">Formularz zawiera błędy</p>
+                <input type="submit" class="form-buttons-submit" value="Dodaj">
+                <a href="/students" class="form-buttons-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

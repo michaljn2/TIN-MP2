@@ -1,0 +1,54 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły grupy</h2>
+        <form class="form">
+            <label for="shortcut">Skrót: <span class="symbol-required">*</span></label>
+            <input type="text" value="2022Z-TIN-19c" name="shortcut" id="shortcut" disabled>
+            <span id="errorShortcut"></span>
+
+            <label for="course">Przedmiot: <span class="symbol-required">*</span></label>
+            <input type="text" value="TIN" name="course" id="course" disabled>
+            <span id="errorCourse"></span>
+
+            <label for="faculty">Specjalizacja:</label>
+            <input type="text" value="Bazy danych" name="faculty" id="faculty" disabled>
+            <span id="errorFaculty"></span>
+
+            <label for="capacity">Liczba miejsc: <span class="symbol-required">*</span></label>
+            <input type="number" value="15" name="capacity" id="capacity" disabled>
+            <span id="errorCapacity"></span>
+
+            <div class="form-buttons">
+                <a href="/groups/edit/:groupId" class="list-actions-button-edit">Edytuj</a>
+            </div>
+        </form>
+        <h2>Szczegóły studentów grupy</h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Imię</th>
+                    <th>Nazwisko</th>
+                    <th>Ocena</th>
+                    <th>ITN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>Jan</td>
+                    <td>Kowalski</td>
+                    <td>4</td>
+                    <td>Nie</td>
+                </tr>
+                <tr>
+                    <td>Marek</td>
+                    <td>Kwiatkowski</td>
+                    <td>5</td>
+                    <td>Nie</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-buttons">
+            <a href="/groups" class="form-buttons-back">Powrót</a>
+        </div>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

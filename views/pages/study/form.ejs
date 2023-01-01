@@ -1,0 +1,103 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationStudyForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <form id="studyForm" class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= study._id %>">
+
+        <label for="student_id"><%= __('study.fields.student')%>: <span class="symbol-required">*</span></label>
+        <select name="student_id" id="student_id" required <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                class="<%= validationErrors.find(e => e.path.includes('student')) ? 'error-input' : ''%>"
+        >
+            <option value="" selected>-- <%= __('study.form.selectStudent')%> --</option>
+            <% for (let i = 0; i < allStuds.length; i++) { let stud = allStuds[i]; %>
+            <option value="<%= stud._id %>" label="<%= stud.firstName + ' ' + stud.lastName + ' ' + stud.index %>"
+                    <%= (stud._id.toString() == study.student_id) ? 'selected' : '' %>>
+            </option>
+            <% } %>
+        </select>
+        <span class="errors-text" id="errorStudent">
+            <% if (validationErrors.find(e => e.path.includes('student'))) { %>
+                <%= validationErrors.find(e => e.path.includes('student')).message%>
+            <% } %>
+        </span>
+
+        <label for="group_id"><%= __('study.fields.group')%>: <span class="symbol-required">*</span></label>
+        <select name="group_id" id="group_id" required <%= (formMode == 'showDetails' ) ? 'disabled' : '' %>
+                class="<%= validationErrors.find(e => e.path.includes('group')) ? 'error-input' : ''%>"
+        >
+            <option value="" selected>-- <%= __('study.form.selectGroup')%> --</option>
+            <% for (let i = 0; i < allGroups.length; i++) { let group = allGroups[i]; %>
+            <option value="<%=group._id %>" label="<%= group.shortcut %>"
+                    <%= (group._id.toString() == study.group_id) ? 'selected' : '' %>>
+            </option>
+            <% } %>
+        </select>
+        <span class="errors-text" id="errorGroup">
+            <% if (validationErrors.find(e => e.path.includes('group'))) { %>
+                <%= validationErrors.find(e => e.path.includes('group')).message%>
+            <% } %>
+        </span>
+
+        <label for="itn"><%= __('study.fields.itn')%>: </label>
+<!--        <input type="hidden" value="0" name="itn" id="hiddenItn">-->
+        <input type="checkbox" value="1" name="itn" id="itn" <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                <%= (study.itn == 1 ? 'checked' : '') %>
+               class="<%= validationErrors.find(e => e.path.includes('itn')) ? 'error-input' : ''%>"
+        >
+
+<!--        dodaje funkcje, która bedzie ustawiala hiddenItn na disabled w przypadku, jesli itn zostanie zaznaczony-->
+<!--        (tak zeby nie wyslal sie w formularzu)-->
+<!--        <script type="application/javascript">-->
+<!--            document.getElementById("studyForm").addEventListener('submit', () => {-->
+<!--                if (document.getElementById("itn").checked){-->
+<!--                    document.getElementById("hiddenItn").disabled = true;-->
+<!--                }-->
+<!--            })-->
+<!--        </script>-->
+        <span class="errors-text" id="errorITN">
+            <% if (validationErrors.find(e => e.path.includes('itn'))) { %>
+                <%= validationErrors.find(e => e.path.includes('itn')).message%>
+            <% } %>
+        </span>
+
+        <label for="grade"><%= __('study.fields.grade')%>:</label>
+        <select name="grade" id="grade" <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                class="<%= validationErrors.find(e => e.path.includes('grade')) ? 'error-input' : ''%>"
+        >
+            <option value="" selected>-- <%= __('study.form.selectGrade')%> --</option>
+            <option value="2.0" <%= (study.grade && study.grade.toString() == '2.0') ? 'selected' : '' %>>2</option>
+            <option value="3.0" <%= (study.grade && study.grade.toString() == '3.0') ? 'selected' : '' %>>3</option>
+            <option value="3.5" <%= (study.grade && study.grade.toString() == '3.5') ? 'selected' : '' %>>3.5</option>
+            <option value="4.0" <%= (study.grade && study.grade.toString() == '4.0') ? 'selected' : '' %>>4</option>
+            <option value="4.5" <%= (study.grade && study.grade.toString() == '4.5') ? 'selected' : '' %>>4.5</option>
+            <option value="5.0" <%= (study.grade && study.grade.toString() == '5.0') ? 'selected' : '' %>>5</option>
+        </select>
+        <span class="errors-text" id="errorGrade">
+            <% if (validationErrors.find(e => e.path.includes('grade'))) { %>
+                <%= validationErrors.find(e => e.path.includes('grade')).message%>
+            <% } %>
+        </span>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="form-buttons">
+                <a href="/studies/edit/<%= study._id %>" class="form-buttons-edit"><%= __('form.actions.edit')%></a>
+            </div>
+        <% } %>
+        <div class="form-buttons">
+            <p id="errorsSummary" class="errors-text"> <%= validationErrors.length > 0 ? __('validation.invalidForm') : ''%> </p>
+            <% if (formMode != 'showDetails') { %>
+                <input class="form-buttons-submit" type="submit" form="studyForm" value="<%= btnLabel %>">
+                <a class="form-buttons-cancel" href="/studies"><%= __('form.actions.cancel')%></a>
+            <% } else { %>
+                <a class="form-buttons-cancel" href="/studies"><%= __('form.actions.return')%></a>
+            <% } %>
+        </div>
+    </form>
+</main>
+<%- include('../../fragments/footer.ejs') %>
+
+<div style="display:none">
+    <span id="errorMessage-required"><%= __('validation.required')%></span>
+    <span id="errorMessage-invalidForm"><%= __('validation.invalidForm')%></span>
+</div>

@@ -1,0 +1,44 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2><%= __('group.list.title')%></h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th><%= __('group.fields.shortcut')%></th>
+            <th><%= __('group.fields.course')%></th>
+            <th><%= __('group.fields.capacity')%></th>
+            <th><%= __('list.actions.title')%></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let group of groups) { %>
+            <tr>
+                <td><%= group.shortcut%></td>
+                <td><%= group.course%></td>
+                <td><%= group.capacity%></td>
+                <td>
+                    <ul class="list-actions">
+                        <li>
+                            <a href="/groups/details/<%=group._id%>" class="list-actions-button-details">
+                                <img src="/images/INFO.png" alt="Details" class="action-icon">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/groups/edit/<%=group._id%>" class="list-actions-button-edit">
+                                <img src="/images/EDIT.png" alt="Edit" class="action-icon">
+                            </a>
+                        </li>
+                        <li>
+                            <a href="/groups/delete/<%=group._id%>" class="list-actions-button-delete">
+                                <img src="/images/DELETE.png" alt="Delete" class="action-icon">
+                            </a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <p><a href="/groups/add" class="button-add"><%= __('group.list.addNew')%></a></p>
+</main>
+<%- include('../../fragments/footer.ejs') %>

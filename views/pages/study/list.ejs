@@ -1,0 +1,44 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <h2><%= __('study.list.pageTitle')%></h2>
+    <table class="table-list">
+        <thead>
+        <tr>
+            <th><%= __('study.fields.student')%></th>
+            <th><%= __('study.fields.group')%></th>
+            <th><%= __('study.fields.grade')%></th>
+            <th><%= __('list.actions.title')%></th>
+        </tr>
+        </thead>
+        <tbody>
+        <% for (let study of studies) { %>
+        <tr>
+            <td><%= study.student.firstName + ' ' + study.student.lastName + ' ' + study.student.index %></td>
+            <td><%= study.group.shortcut %></td>
+            <td><%= study.grade %></td>
+            <td>
+                <ul class="list-actions">
+                    <li>
+                        <a href="/studies/details/<%= study._id %>" class="list-actions-button-details">
+                            <img src="/images/INFO.png" alt="Details" class="action-icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/studies/edit/<%= study._id %>" class="list-actions-button-edit">
+                            <img src="/images/EDIT.png" alt="Edit" class="action-icon">
+                        </a>
+                    </li>
+                    <li>
+                        <a href="/studies/delete/<%= study._id %>" class="list-actions-button-delete">
+                            <img src="/images/DELETE.png" alt="Delete" class="action-icon">
+                        </a>
+                    </li>
+                </ul>
+            </td>
+        </tr>
+        <% } %>
+        </tbody>
+    </table>
+    <p><a href="/studies/add" class="button-add"><%= __('study.list.addNew')%></a></p>
+</main>
+<%- include('../../fragments/footer.ejs') %>

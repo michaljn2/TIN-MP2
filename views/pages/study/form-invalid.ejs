@@ -1,0 +1,44 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Nowa przynależność</h2>
+        <form class="form">
+            <label for="idStudent">Student: <span class="symbol-required">*</span></label>
+            <select name="idStudent" id="idStudent" class="error-input" required>
+                <option value="">-- Wybierz studenta --</option>
+                <option value="1">Jan Kowalski</option>
+                <option value="2">Marek Kwiatkowski</option>
+            </select>
+            <span id="errorIdStudent" class="errors-text">Pole jest wymagane</span>
+
+            <label for="idGroup">Grupa: <span class="symbol-required">*</span></label>
+            <select name="idGroup" id="idGroup" class="error-input" required>
+                <option value="">-- Wybierz grupę --</option>
+                <option value="1">2022Z-TIN-19c</option>
+                <option value="2">2021L-ASD-19c</option>
+            </select>
+            <span id="errorIdGroup" class="errors-text">Pole jest wymagane</span>
+
+            <label for="ITN">ITN: </label>
+            <input type="checkbox" name="ITN" id="ITN">
+            <span id="errorITN"></span>
+
+            <label for="grade">Ocena:</label>
+            <select name="grade" id="grade">
+                <option value="">-- Wybierz ocenę --</option>
+                <option value="2">2</option>
+                <option value="3">3</option>
+                <option value="3,5">3.5</option>
+                <option value="4">4</option>
+                <option value="4,5">4.5</option>
+                <option value="5">5</option>
+            </select>
+            <span id="errorGrade"></span>
+
+            <div class="form-buttons">
+                <p id="errorsSummary" class="errors-text">Formularz zawiera błędy</p>
+                <input type="submit" class="form-buttons-submit" value="Dodaj">
+                <a href="/studies" class="form-buttons-cancel">Anuluj</a>
+            </div>
+        </form>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

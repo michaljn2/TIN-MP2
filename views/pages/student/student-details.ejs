@@ -1,0 +1,58 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2>Szczegóły studenta</h2>
+        <form class="form">
+            <label for="firstName">Imię: <span class="symbol-required">*</span></label>
+            <input type="text" value="Jan" name="firstName" id="firstName" disabled>
+            <span id="errorFirstName"></span>
+
+            <label for="lastName">Nazwisko: <span class="symbol-required">*</span> </label>
+            <input type="text" value="Kowalski" name="lastName" id="lastName" disabled>
+            <span id="errorLastName"></span>
+
+            <label for="index">Indeks: <span class="symbol-required">*</span> </label>
+            <input type="text" value="s22908" name="index" id="index" disabled>
+            <span id="errorIndex"></span>
+
+            <label for="Email">Email: <span class="symbol-required">*</span> </label>
+            <input type="email" value="kowal@gmail.com" name="Email" id="Email" disabled>
+            <span id="errorEmail"></span>
+
+            <label for="birthDate">Data urodzenia: <span class="symbol-required">*</span> </label>
+            <input type="date" value="2001-03-20" name="birthDate" id="birthDate" disabled>
+            <span id="errorBirthDate"></span>
+
+            <div class="form-buttons">
+                <a href="/students/edit/:studentId" class="form-buttons-edit">Edytuj</a>
+            </div>
+        </form>
+        <h2>Szczegóły grup studenta</h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th>Skrót grupy</th>
+                    <th>Przedmiot</th>
+                    <th>Ocena</th>
+                    <th>ITN</th>
+                </tr>
+            </thead>
+            <tbody>
+                <tr>
+                    <td>2021Z-ASD-19c</td>
+                    <td>ASD</td>
+                    <td>4</td>
+                    <td>Nie</td>
+                </tr>
+                <tr>
+                    <td>2021L-TPO-19c</td>
+                    <td>TPO</td>
+                    <td>5</td>
+                    <td>Nie</td>
+                </tr>
+            </tbody>
+        </table>
+        <div class="form-buttons">
+            <a href="/students/details" class="form-buttons-back">Powrót</a>
+        </div>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

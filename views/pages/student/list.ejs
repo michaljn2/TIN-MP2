@@ -1,0 +1,44 @@
+<%- include('../../fragments/header.ejs') %>
+    <main>
+        <h2><%= __('stud.list.title')%></h2>
+        <table class="table-list">
+            <thead>
+                <tr>
+                    <th><%= __('stud.fields.firstName')%></th>
+                    <th><%= __('stud.fields.lastName')%></th>
+                    <th><%= __('stud.fields.index')%></th>
+                    <th><%= __('list.actions.title')%></th>
+                </tr>
+            </thead>
+            <tbody>
+            <% for (let stud of studs) { %>
+                <tr>
+                    <td><%=stud.firstName%></td>
+                    <td><%=stud.lastName%></td>
+                    <td><%=stud.index%></td>
+                    <td>
+                        <ul class="list-actions">
+                            <li>
+                                <a href="/students/details/<%=stud._id%>" class="list-actions-button-details">
+                                    <img src="/images/INFO.png" alt="Details" class="action-icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/students/edit/<%=stud._id%>" class="list-actions-button-edit">
+                                    <img src="/images/EDIT.png" alt="Edit" class="action-icon">
+                                </a>
+                            </li>
+                            <li>
+                                <a href="/students/delete/<%=stud._id%>" class="list-actions-button-delete">
+                                    <img src="/images/DELETE.png" alt="Delete" class="action-icon">
+                                </a>
+                            </li>
+                        </ul>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <p><a href="/students/add" class="button-add"><%= __('stud.list.addNew')%></a></p>
+    </main>
+<%- include('../../fragments/footer.ejs') %>

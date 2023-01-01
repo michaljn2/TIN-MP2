@@ -1,0 +1,3 @@
+- dodac repeatPassword
+- dodac do slownika teksty z unique ( i do kontrolera)
+- dodac internacjonalizacje do walidacji serwera

@@ -1,0 +1,155 @@
+<%- include('../../fragments/header.ejs') %>
+<main>
+    <script type="application/javascript" src="/js/validationStudentForm.js"></script>
+    <h2><%= pageTitle %></h2>
+    <form id="studentForm" class="form" method="post" action="<%= formAction %>" novalidate onsubmit="return validateForm();">
+        <input type="hidden" name="_id" value="<%= stud._id %>">
+
+        <label for="firstName"><%= __('stud.fields.firstName')%>: <span class="symbol-required">*</span></label>
+        <input type="text" name="firstName" id="firstName" placeholder="<%= __('stud.form.placeholder.firstName')%>" value="<%= stud.firstName %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+                class="<%= validationErrors.find(e => e.path.includes('firstName')) ? 'error-input' : ''%>"
+        >
+        <span class="errors-text" id="errorFirstName">
+            <% if (validationErrors.find(e => e.path.includes('firstName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('firstName')).message%>
+            <% } %>
+        </span>
+
+        <label for="lastName"><%= __('stud.fields.lastName')%>: <span class="symbol-required">*</span></label>
+        <input type="text" name="lastName" id="lastName" placeholder="<%= __('stud.form.placeholder.lastName')%>" value="<%= stud.lastName %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('lastName')) ? 'error-input' : ''%>"
+        >
+        <span class="errors-text" id="errorLastName">
+            <% if (validationErrors.find(e => e.path.includes('lastName'))) { %>
+                <%= validationErrors.find(e => e.path.includes('lastName')).message%>
+            <% } %>
+        </span>
+
+        <label for="index"><%= __('stud.fields.index')%>: <span class="symbol-required">*</span> </label>
+        <input type="text" name="index" id="index" placeholder="<%= __('stud.form.placeholder.index')%>" value="<%= stud.index %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('index')) ? 'error-input' : ''%>"
+        >
+        <span class="errors-text" id="errorIndex">
+            <% if (validationErrors.find(e => e.path.includes('index'))) { %>
+                <%= validationErrors.find(e => e.path.includes('index')).message%>
+            <% } %>
+        </span>
+
+        <label for="birthDate"><%= __('stud.fields.birthDate')%>: <span class="symbol-required">*</span></label>
+        <input type="date" name="birthDate" id="birthDate"
+                value="<%= fmt.formatDate(stud.birthDate) %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('birthDate')) ? 'error-input' : ''%>"
+        >
+        <span class="errors-text" id="errorBirthDate">
+            <% if (validationErrors.find(e => e.path.includes('birthDate'))) { %>
+                <%= validationErrors.find(e => e.path.includes('birthDate')).message%>
+            <% } %>
+        </span>
+
+        <label for="email"><%= __('stud.fields.email')%>: <span class="symbol-required">*</span></label>
+        <input type="text" name="email" id="email" placeholder="<%= __('stud.form.placeholder.email')%>" value="<%= stud.email %>"
+                <%= (formMode == 'showDetails') ? 'disabled' : '' %>
+               class="<%= validationErrors.find(e => e.path.includes('email')) ? 'error-input' : ''%>"
+        >
+        <span class="errors-text" id="errorEmail">
+            <% if (validationErrors.find(e => e.path.includes('email'))) { %>
+                <%= validationErrors.find(e => e.path.includes('email')).message%>
+            <% } %>
+        </span>
+
+        <% if (formMode == 'createNew') {%>
+            <label for="password"><%= __('stud.fields.password')%>: <span class="symbol-required">*</span></label>
+        <% } %>
+            <input type="text" name="password" id="password"
+                <%= (formMode == 'createNew') ? '' : 'hidden' %>
+                   class="<%= validationErrors.find(e => e.path.includes('password')) ? 'error-input' : ''%>"
+            >
+            <span class="errors-text" id="errorPassword">
+                <% if (validationErrors.find(e => e.path.includes('password'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('password')).message%>
+                <% } %>
+            </span>
+        <% if (formMode == 'createNew') {%>
+            <label for="repeatPassword"><%= __('stud.fields.password')%>: <span class="symbol-required">*</span></label>
+        <% } %>
+            <input type="password" name="repeatPassword" id="repeatPassword"
+                    <%= (formMode == 'createNew') ? '' : 'hidden' %>
+                   class="<%= validationErrors.find(e => e.path.includes('repeatPassword')) ? 'error-input' : ''%>"
+            >
+            <span class="errors-text" id="errorRepeatPassword">
+                <% if (validationErrors.find(e => e.path.includes('repeatPassword'))) { %>
+                    <%= validationErrors.find(e => e.path.includes('repeatPassword')).message%>
+                <% } %>
+            </span>
+
+
+        <p id="errorsSummary" class="errors-text"> <%= validationErrors.length > 0 ? __('validation.invalidForm') : ''%></p>
+
+        <% if (formMode == 'showDetails') { %>
+            <div class="form-buttons">
+                <a href="/students/edit/<%= stud._id %>" class="form-buttons-edit"><%= __('form.actions.edit')%></a>
+            </div>
+        <% } %>
+    </form>
+    <% if (formMode == 'showDetails' || formMode == 'edit') { %>
+        <% if (stud.studies.length > 0) {%>
+        <h2>
+            <%= __('stud.form.studies')%>
+        </h2>
+        <table class="table-list">
+            <thead>
+            <tr>
+                <th><%= __('study.fields.group')%></th>
+                <th><%= __('group.fields.course')%></th>
+                <th><%= __('study.fields.grade')%></th>
+                <th><%= __('study.fields.itn')%></th>
+            </tr>
+            </thead>
+            <tbody>
+            <% for (let s of stud.studies) { %>
+                <tr>
+                    <td><a href="/groups/details/<%= s.group._id %>"><%= s.group.shortcut %></a></td>
+                    <td>
+                        <%= s.group.course %>
+                    </td>
+                    <td>
+                        <%= s.grade %>
+                    </td>
+                    <td>
+                        <%= (s.itn == 0) ?  __('common.no') :  __('common.yes')%>
+                    </td>
+                </tr>
+            <% } %>
+            </tbody>
+        </table>
+        <% } %>
+    <% } %>
+
+    <div class="form-buttons">
+        <% if (formMode != 'showDetails') { %>
+            <input class="form-buttons-submit" type="submit" form="studentForm" value="<%= btnLabel %>">
+            <a class="form-buttons-cancel" href="/students"><%= __('form.actions.cancel')%></a>
+        <% } else { %>
+            <a class="form-buttons-cancel" href="/students"><%= __('form.actions.return')%></a>
+        <% } %>
+    </div>
+</main>
+<%- include('../../fragments/footer.ejs') %>
+
+<div style="display: none">
+    <span id="errorMessage-required"><%= __('validation.required')%></span>
+    <span id="errorMessage-invalidForm"><%= __('validation.invalidForm')%></span>
+    <span id="errorMessage-firstName"><%= __('validation.stud.firstName')%></span>
+    <span id="errorMessage-lastName"><%= __('validation.stud.lastName')%></span>
+    <span id="errorMessage-index-regex"><%= __('validation.stud.index.regex')%></span>
+    <span id="errorMessage-birthDate-regex"><%= __('validation.stud.birthDate.regex')%></span>
+    <span id="errorMessage-birthDate-mature"><%= __('validation.stud.birthDate.mature')%></span>
+    <span id="errorMessage-email-range"><%= __('validation.stud.email.range')%></span>
+    <span id="errorMessage-email-regex"><%= __('validation.stud.email.regex')%></span>
+    <span id="errorMessage-password-range"><%= __('validation.password.range')%></span>
+    <span id="errorMessage-repeatPassword"><%= __('validation.repeatPassword')%></span>
+</div>
