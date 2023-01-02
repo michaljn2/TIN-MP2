@@ -12,7 +12,6 @@ const studyRouter = require('./routes/studyRoute');
 var app = express();
 
 var cors = require('cors');
-app.use(cors);
 
 // view engine setup
 app.set('views', path.join(__dirname, 'views'));
@@ -30,6 +29,8 @@ app.use((req, res, next) => {
     res.locals.fmt = fmt;
     next();
 });
+
+app.use(cors());
 
 //sesje użytkownika
 const session = require('express-session');
@@ -110,5 +111,4 @@ sequelizeInit()
         console.log(err);
     });
 module.exports = app;
-
 
