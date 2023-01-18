@@ -13,7 +13,8 @@ const Study = sequelize.define('Study', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "This field is required"
+                // msg: "This field is required"
+                msg: "required"
             }
         }
     },
@@ -26,7 +27,8 @@ const Study = sequelize.define('Study', {
         allowNull: false,
         validate:{
             notEmpty: {
-                msg: "This field is required"
+                // msg: "This field is required"
+                msg: "required"
             }
         }
     },
@@ -35,7 +37,8 @@ const Study = sequelize.define('Study', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "This field is required"
+                // msg: "This field is required"
+                msg: "required"
             }
         }
     }

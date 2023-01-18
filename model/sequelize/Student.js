@@ -24,11 +24,13 @@ const Student = sequelize.define('Student', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "This field is required"
+                // msg: "This field is required"
+                msg: "required"
             },
             len: {
                 args: [2,60],
-                msg: "This field must contain 2-60 signs"
+                // msg: "This field must contain 2-60 signs"
+                msg: "firstName"
             },
         }
     },
@@ -37,11 +39,13 @@ const Student = sequelize.define('Student', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "This field is required"
+                // msg: "This field is required"
+                msg: "required"
             },
             len: {
                 args: [2,60],
-                msg: "This field must contain 2-60 signs"
+                // msg: "This field must contain 2-60 signs"
+                msg: "lastName"
             },
         }
     },
@@ -50,9 +54,14 @@ const Student = sequelize.define('Student', {
         allowNull: false,
         unique: true,
         validate: {
+            notEmpty:{
+              // msg: "This field is required"
+                msg: "required"
+            },
             is: {
                 args: /^s[1-9][0-9]{0,4}/,
-                msg: "This field must contain 's' and 1-5 signs student number"
+                // msg: "This field must contain 's' and 1-5 signs student number"
+                msg: "index"
             }
         }
     },
@@ -61,10 +70,12 @@ const Student = sequelize.define('Student', {
         allowNull: false,
         validate: {
             notEmpty: {
-                msg: "This field is required"
+                // msg: "This field is required"
+                msg: "required"
             },
             isDate: {
-                msg: "This field must be a date in 'yyyy-MM-dd' format"
+                // msg: "This field must be a date in 'yyyy-MM-dd' format"
+                msg: "birthDate-regex"
             },
             isBeforeDate(value) {
                 let nowDate = new Date(),
@@ -80,7 +91,8 @@ const Student = sequelize.define('Student', {
                 const valueDate = new Date(value);
                 const compareToDate = new Date(nowString);
                 if (valueDate.getTime() > compareToDate.getTime()) {
-                    throw new Error(__("student must be at least 18 years old"));
+                    // throw new Error(__("student must be at least 18 years old"));
+                    throw new Error("birthDate-mature")
                 }
             }
         }
@@ -91,18 +103,21 @@ const Student = sequelize.define('Student', {
         unique: true,
         validate: {
             notEmpty: {
-                msg: "This field is required"
+                // msg: "This field is required"
+                msg: "required"
             },
             len: {
                 args:[5,60],
-                msg: "This field must contain 5-60 signs"
+                // msg: "This field must contain 5-60 signs"
+                msg: "email-range"
             },
             isEmail: {
-                msg: "This field must be a proper email address"
+                // msg: "This field must be a proper email address"
+                msg: "email-regex"
             },
             isSameAsIndex (value){
                 if ((this.index + '@pja.edu.pl') != value){
-                    throw new Error('Email must contain student index and @pja.edu.pl domain');
+                    throw new Error('emailFromIndex');
                 }
             }
         }
