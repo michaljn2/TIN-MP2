@@ -89,6 +89,9 @@ app.use('/api/groups', groupApiRouter);
 const studyApiRouter = require('./routes/api/StudyApiRoute');
 app.use('/api/studies', studyApiRouter);
 
+const authApiRouter = require('./routes/api/AuthApiRoute');
+app.use('/api/auth', authApiRouter);
+
 // catch 404 and forward to error handler
 app.use(function(req, res, next) {
   next(createError(404));
