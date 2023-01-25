@@ -61,10 +61,10 @@ exports.addStudent = (req, res, next) => {
         })
         .catch(err => {
             err.errors.forEach(e => {
-                if (e.path.includes('email') && e.type == 'unique violation'){
+                if (e.path.includes('email') && e.type === 'unique violation'){
                     e.message = "Podany email jest już używany";
                 }
-                if(e.path.includes('index') && e.type == 'unique violation'){
+                if(e.path.includes('index') && e.type === 'unique violation'){
                     e.message = 'Podany indeks jest już używany';
                 }
             });
@@ -92,10 +92,10 @@ exports.updateStudent = (req, res, next) => {
                 .then(std => {
                     studData.studies = std.studies;
                     err.errors.forEach(e => {
-                        if (e.path.includes('email') && e.type == 'unique violation'){
+                        if (e.path.includes('email') && e.type === 'unique violation'){
                             e.message = "Podany email jest już używany";
                         }
-                        if(e.path.includes('index') && e.type == 'unique violation'){
+                        if(e.path.includes('index') && e.type === 'unique violation'){
                             e.message = 'Podany indeks jest już używany';
                         }
                     });

@@ -52,7 +52,10 @@ const Student = sequelize.define('Student', {
     index: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
+        unique: {
+            args: true,
+            msg: "uniqueIndex"
+        },
         validate: {
             notEmpty:{
               // msg: "This field is required"
@@ -100,7 +103,10 @@ const Student = sequelize.define('Student', {
     email: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
+        unique: {
+          args: true,
+          msg: "uniqueEmail"
+        },
         validate: {
             notEmpty: {
                 // msg: "This field is required"

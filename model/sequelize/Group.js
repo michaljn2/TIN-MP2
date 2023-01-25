@@ -13,7 +13,10 @@ const Group = sequelize.define('Group', {
     shortcut: {
         type: Sequelize.STRING,
         allowNull: false,
-        unique: true,
+        unique: {
+            args: true,
+            msg: "uniqueShortcut"
+        },
         validate: {
             notEmpty: {
                 // msg: "This field is required"
