@@ -32,7 +32,7 @@ exports.createGroup = (req, res, next) => {
             if (!err.statusCode) {
                 err.statusCode = 500;
             }
-            next(err);
+            res.status(500).json(err.errors);
         });
 };
 
@@ -46,7 +46,7 @@ exports.updateGroup = (req, res, next) => {
             if (!err.statusCode) {
                 err.statusCode = 500;
             }
-            next(err);
+            res.status(500).json(err.errors);
         });
 };
 

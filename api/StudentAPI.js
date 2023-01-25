@@ -32,7 +32,7 @@ exports.createStudent = (req, res, next) => {
             if (!err.statusCode) {
                 err.statusCode = 500;
             }
-            next(err);
+            res.status(500).json(err.errors);
         });
 };
 
@@ -46,7 +46,7 @@ exports.updateStudent = (req, res, next) => {
             if (!err.statusCode) {
                 err.statusCode = 500;
             }
-            next(err);
+            res.status(500).json(err.errors);
         });
 };
 
@@ -60,6 +60,6 @@ exports.deleteStudent = (req, res, next) => {
             if(!err.statusCode) {
                 err.statusCode = 500;
             }
-            next(err);
+            res.status(500).json(err.errors);
         });
 };
