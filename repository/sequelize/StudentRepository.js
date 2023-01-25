@@ -40,7 +40,7 @@ exports.updateStudent = (studId, studData) => {
     const birthDate = studData.birthDate;
     const email = studData.email;
     const password = studData.password;
-    if(password) {
+    if(password && password !== '') {
         return Student.update({
             firstName: studData.firstName,
             lastName: studData.lastName,
